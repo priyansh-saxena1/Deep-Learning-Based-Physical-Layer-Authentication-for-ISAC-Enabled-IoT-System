@@ -1,0 +1,22 @@
+name: pla
+channels:
+  - conda-forge
+dependencies:
+  # CUDA 11.8 knows sm_89 (Ada) and JITs TF 2.10's shipped compute_86 PTX.
+  # cuDNN 8.8 is the newest 8.x with a win-64 CUDA-11 build, which TF 2.10 requires.
+  - python=3.10
+  - cudatoolkit=11.8.0
+  - cudnn=8.8.0.121
+  - pip
+  - pip:
+      # TensorFlow dropped native-Windows GPU support after 2.10, so 2.10.1 is pinned.
+      - tensorflow==2.10.1
+      - tensorflow-addons==0.19.0
+      - numpy<2
+      - scipy
+      - h5py
+      - scikit-learn
+      - matplotlib
+      - seaborn
+      # Only needed because utils.py imports cupy at module scope for check_gpu().
+      - cupy-cuda11x

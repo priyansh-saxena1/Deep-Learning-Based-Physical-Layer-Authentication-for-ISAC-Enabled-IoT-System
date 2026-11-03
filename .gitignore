@@ -1,0 +1,8 @@
+data/micro_doppler_stft/
+data/dataset/
+data/preprocessed_dataset/
+figures/
+__pycache__/
+*.pyc
+*.h5
+*.mat
