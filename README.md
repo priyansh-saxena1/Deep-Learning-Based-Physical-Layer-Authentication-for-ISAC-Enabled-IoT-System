@@ -5,9 +5,10 @@ channel measurements. A convolutional denoising autoencoder (CDAE) compresses a
 micro-Doppler spectrogram into a 128-d latent vector, and a cosine-distance weighted
 KNN decides whether the sample comes from the authorised activity group.
 
-The measurements come from the public DISC dataset (Pegoraro et al.). **The data is
-not redistributed here**; see [`data/README.md`](data/README.md) for where to get it
-and how to build the model input.
+The measurements come from the public DISC dataset (Pegoraro et al., CC BY 4.0). The
+micro-Doppler spectrograms and the preprocessed array are included in `data/`, so the
+repository is self-contained; see [`DATA_LICENSE.md`](DATA_LICENSE.md) for attribution
+and [`data/README.md`](data/README.md) for details.
 
 ## Layout
 
@@ -36,7 +37,7 @@ Exact versions from the training machine are in `requirements-lock.txt`.
 
 ## Running
 
-After placing the DISC files as described in `data/README.md`:
+The input data is already in `data/`. To rebuild the model input from the spectrograms:
 
 ```bash
 python preprocess_md.py
@@ -59,8 +60,8 @@ different `--tag` per run; two batches sharing a tag overwrite each other.
 
 On a headless machine or notebook kernel, set `MPLBACKEND=Agg` first.
 
-`make_figures.py` only reads the JSON files, so you can regenerate the figures from the
-committed `results/` without the dataset.
+`make_figures.py` only reads the JSON files, so you can regenerate every figure from the
+committed `results/` without training anything.
 
 ## Results
 
@@ -101,8 +102,8 @@ and padded from 59 to 64 Doppler bins. `preprocess_md.py` documents each step.
 
 ## Citation and licence
 
-Code is released under the MIT licence (see `LICENSE`). If you use the data, cite the
-DISC authors:
+Code: MIT (`LICENSE`). Data: DISC, CC BY 4.0 (`DATA_LICENSE.md`). If you use the data,
+cite the DISC authors:
 
 > Pegoraro, Saucedo, Lacruz, Rossi, Widmer. *DISC: a Dataset for Integrated Sensing and
 > Communication in mmWave Systems.* IEEE DataPort, doi:10.21227/2gm7-9z72.
